@@ -73,4 +73,5 @@ python main.py --node --id vm1 --controller-host 127.0.0.1 --controller-port 600
 - `fix_imports.py` — Fixes imports in generated gRPC code
 
 ---
-MIT License
+ICT UNIVERSITY License
+
