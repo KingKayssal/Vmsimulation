@@ -31,17 +31,20 @@ A Python-based distributed file storage simulation using gRPC and Flask. Include
    ```
 
 ## Running the Simulation
+
 ### 1. Start the Controller (with Dashboard)
+On Windows PowerShell, use:
 ```
-python main.py --controller --host 127.0.0.1 --port 6000
+& "D:/DS & Cloud computing/vm_simulation1/.venv/Scripts/python.exe" main.py --controller --host 127.0.0.1 --port 6000
 ```
-- The dashboard will be available at [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
+The dashboard will be available at [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
 
 ### 2. Start a Node (VM)
+Open a new PowerShell terminal and use:
 ```
-python main.py --node --id vm1 --controller-host 127.0.0.1 --controller-port 6000 --host 127.0.0.1 --port 5001
+& "D:/DS & Cloud computing/vm_simulation1/.venv/Scripts/python.exe" main.py --node --id vm1 --controller-host 127.0.0.1 --controller-port 6000 --host 127.0.0.1 --port 5001
 ```
-- You can start multiple nodes with different `--id` and `--port` values.
+You can start multiple nodes with different `--id` and `--port` values (e.g., `vm2`, `5002`).
 
 ### 3. Use the Dashboard
 - Register nodes, upload files, and download files directly from the web interface.
@@ -73,5 +76,4 @@ python main.py --node --id vm1 --controller-host 127.0.0.1 --controller-port 600
 - `fix_imports.py` — Fixes imports in generated gRPC code
 
 ---
-ICT UNIVERSITY License
-
+MIT License
