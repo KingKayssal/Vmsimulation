@@ -76,4 +76,5 @@ You can start multiple nodes with different `--id` and `--port` values (e.g., `v
 - `fix_imports.py` — Fixes imports in generated gRPC code
 
 ---
-MIT License
+THE ICT UNIVERSITY 
+
