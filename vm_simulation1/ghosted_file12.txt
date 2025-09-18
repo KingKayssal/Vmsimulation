@@ -1,0 +1,1 @@
+Ghosted file: file12.txt from vm1

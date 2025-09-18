@@ -1,0 +1,1 @@
+Replicate file: file.txt from vm2

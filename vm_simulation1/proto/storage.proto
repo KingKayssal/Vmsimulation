@@ -1,0 +1,76 @@
+
+syntax = "proto3";
+
+message FileAnnouncement {
+  string id = 1;
+  string address = 2;
+  int32 port = 3;
+  string filename = 4;
+}
+
+package storage;
+
+
+
+message NodeInfo {
+  string id = 1;
+  string address = 2;
+  int32 port = 3;
+}
+message NodeLocation {
+  string id = 1;
+  string address = 2;
+  int32 port = 3;
+}
+
+message NodeLocationList {
+  repeated NodeLocation nodes = 1;
+}
+
+message Response {
+  string message = 1;
+}
+
+message FileRequest {
+  string filename = 1;
+  bytes content = 2;
+}
+
+message FileDownloadRequest {
+  string filename = 1;
+}
+
+message FileContent {
+  string filename = 1;
+  bytes content = 2;
+}
+
+message FileName {
+  string filename = 1;
+}
+
+message FileList {
+  repeated string filenames = 1;
+}
+
+
+service StorageController {
+  // Notify other VMs that a file has been duplicated/ghosted
+  rpc NotifyDuplicate(FileAnnouncement) returns (Response);
+  rpc RegisterNode(NodeInfo) returns (Response);
+  rpc Heartbeat(NodeInfo) returns (Response);
+  rpc SetOffline(NodeInfo) returns (Response);
+
+  rpc AnnounceFile(FileAnnouncement) returns (Response); // Node tells controller it has a file
+  rpc GetFileLocations(FileName) returns (NodeLocationList); // Get nodes that have a file
+
+  rpc CreateFile(FileName) returns (Response);
+  rpc DeleteFile(FileName) returns (Response);
+  rpc ModifyFile(FileRequest) returns (Response);
+  rpc ListFiles(NodeInfo) returns (FileList);
+}
+
+service NodeFileService {
+  rpc DownloadFile(FileDownloadRequest) returns (FileContent);
+  rpc NotifyDuplicate(FileAnnouncement) returns (Response);
+}
